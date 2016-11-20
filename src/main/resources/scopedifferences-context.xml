@@ -11,7 +11,7 @@
 
     <bean id="master" class="pl.akulawik.springsamples.xmlconfig.scopedifferences.Master" abstract="true">
         <property name="beanNamePrinter" ref="beanNamePrinter"/>
-            </bean>
+    </bean>
 
     <bean id="singletonMasterWithPrototypeWorker"
           class="pl.akulawik.springsamples.xmlconfig.scopedifferences.SingletonMasterWithPrototypeWorker"

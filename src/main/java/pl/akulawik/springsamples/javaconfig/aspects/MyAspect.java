@@ -11,6 +11,11 @@ public class MyAspect {
         System.out.println("beforeMethod");
     }
 
+    @Pointcut("execution (* pl.akulawik.springsamples.javaconfig.aspects.MyBean.method())")
+    public void pointcutMethod() {
+        System.out.println("pointcutMethod");
+    }
+
     @After("execution (* pl.akulawik.springsamples.javaconfig.aspects.MyBean.method())")
     public void afterMethod() {
         System.out.println("afterMethod");

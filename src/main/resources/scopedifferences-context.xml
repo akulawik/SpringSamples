@@ -25,7 +25,12 @@
         <property name="scopedProxyWorker" ref="scopedProxyWorker"/>
     </bean>
 
-    <bean id="lookupMethodMaster" class="pl.akulawik.springsamples.xmlconfig.scopedifferences.LookupMethodMaster"
+    <bean id="abstractLookupMethodMaster" class="pl.akulawik.springsamples.xmlconfig.scopedifferences.AbstractLookupMethodMaster"
+          parent="master">
+        <lookup-method name="createLookupMethodWorker" bean="lookupMethodWorker"/>
+    </bean>
+
+    <bean id="concreteLookupMethodMaster" class="pl.akulawik.springsamples.xmlconfig.scopedifferences.ConcreteLookupMethodMaster"
           parent="master">
         <lookup-method name="createLookupMethodWorker" bean="lookupMethodWorker"/>
     </bean>

@@ -1,6 +1,6 @@
 package pl.akulawik.springsamples.xmlconfig.scopedifferences;
 
-public abstract class LookupMethodMaster extends Master {
+public abstract class AbstractLookupMethodMaster extends Master {
 
     protected abstract LookupMethodWorker createLookupMethodWorker();
 

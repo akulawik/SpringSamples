@@ -1,11 +1,12 @@
-package pl.akulawik.springsamples.xmlconfig.scopedifferences;
+package pl.akulawik.springsamples.javaconfig.scopedifferences;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import pl.akulawik.springsamples.xmlconfig.scopedifferences.*;
 
 public class Application {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopedifferences-context.xml");
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
 
         System.out.println("Direct injection of prototypes into singleton, which of course doesn't work");
 
@@ -19,14 +20,10 @@ public class Application {
                 = applicationContext.getBean("singletonMasterWithScopedProxyWorker", SingletonMasterWithScopedProxyWorker.class);
         singletonMasterWithScopedProxyWorker.startWorkOnWithScopedProxyWorker(2);
 
+
         System.out.println("Lookup method with abstract method");
 
-        AbstractLookupMethodMaster abstractLookupMethodMaster = applicationContext.getBean("abstractLookupMethodMaster", AbstractLookupMethodMaster.class);
-        abstractLookupMethodMaster.startWorkOnWithLookupMethodWorker(2);
-
-        System.out.println("Lookup method with concrete method");
-
-        ConcreteLookupMethodMaster concreteLookupMethodMaster = applicationContext.getBean("concreteLookupMethodMaster", ConcreteLookupMethodMaster.class);
-        concreteLookupMethodMaster.startWorkOnWithLookupMethodWorker(2);
+        LookupMethodMaster lookupMethodMaster = applicationContext.getBean("lookupMethodMaster", LookupMethodMaster.class);
+        lookupMethodMaster.startWorkOnWithLookupMethodWorker(2);
     }
 }
